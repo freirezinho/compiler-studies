@@ -1,5 +1,5 @@
 import os
-
+import re
 """
 EXERCÍCIO 02
 
@@ -21,5 +21,31 @@ reserved_words = ['auto', 'break', 'case', 'char',
 'struct', 'switch', 'typedef', 'union',
 'unsigned', 'void', 'volatile', 'while']
 
-with open(file_path) as file:
-    lines = file.readlines()
+lettersRegExp = re.compile('[a-z]+[^\n\(\)\"\\\;\s]')
+
+def substrings(word):
+    yield word
+
+word_set = set().union(*map(substrings, reserved_words))
+print(word_set)
+new_lines = []
+
+og_file = open(file_path, 'r')
+new_file = open("new.c", 'w')
+lines = og_file.readlines()
+for line in lines:
+    # print(line)
+    words = line
+    for word in words.split():
+        # print(word)
+        found_words = lettersRegExp.findall(word)
+        for found_word in found_words:
+
+            if found_word in word_set:
+                print(f'replacing {found_word}')
+                words = words.replace(found_word, found_word.upper())
+    # words = " ".join(words)
+    new_file.write(words)
+
+og_file.close()
+new_file.close()
