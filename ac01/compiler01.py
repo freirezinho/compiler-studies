@@ -29,7 +29,7 @@ special_chars_count = 0
 
 with open(file_path) as file:
     # ex
-    lines = file.readlines() 
+    lines = file.readlines()
     for line in lines:
         found_letters = lettersRegExp.findall(line)
         found_digits = digitsRegExp.findall(line)
@@ -40,11 +40,17 @@ with open(file_path) as file:
         whitespaces_count += len(found_whitespaces)
         special_chars_count += len(found_specialchars)
     # print(lines)
-    print(f'{letters_count} letters')
-    print(f'{digits_count} digits')
-    print(f'{whitespaces_count} whitespace characters')
-    print(f'{special_chars_count} special chars')
-    print(f'{len(lines)} lines')
+    count_dict = {}
+    count_dict[letters_count] = 'letras'
+    count_dict[digits_count] = 'dígitos'
+    count_dict[whitespaces_count] = 'espaços em branco'
+    count_dict[special_chars_count] = 'caracteres especiais'
+    count_list = [letters_count, digits_count,
+                  whitespaces_count, special_chars_count]
+    count_list.sort(reverse=True)
+    print("Este arquivo possui...\n")
+    for count in count_list:
+        print(f'{count} {count_dict[count]}')
+    print("\nMetadata: \n")
+    print(f'{len(lines)} linhas')
     print(f'{os.stat(file_path).st_size} bytes')
-
-print("END")

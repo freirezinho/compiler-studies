@@ -13,18 +13,20 @@ solicitadas (ex03.out)
 file_path = './Saulo Santos Freire - ex03.c'
 
 reserved_words = ['auto', 'break', 'case', 'char',
-'const', 'continue', 'default', 'do',
-'double', 'else', 'enum', 'extern',
-'float', 'for', 'goto' 'if',
-'int', 'long', 'register', 'return',
-'short', 'signed', 'sizeof', 'static',
-'struct', 'switch', 'typedef', 'union',
-'unsigned', 'void', 'volatile', 'while']
+                  'const', 'continue', 'default', 'do',
+                  'double', 'else', 'enum', 'extern',
+                  'float', 'for', 'goto' 'if',
+                  'int', 'long', 'register', 'return',
+                  'short', 'signed', 'sizeof', 'static',
+                  'struct', 'switch', 'typedef', 'union',
+                  'unsigned', 'void', 'volatile', 'while']
 
 lettersRegExp = re.compile('[a-z]+[^\n\(\)\"\\\;\s]')
 
+
 def substrings(word):
     yield word
+
 
 word_set = set().union(*map(substrings, reserved_words))
 print(word_set)
@@ -37,8 +39,11 @@ for line in lines:
     # print(line)
     words = line
     for word in words.split():
-        # print(word)
+        if '"' in word:
+            break
+        print(f'word: {word}')
         found_words = lettersRegExp.findall(word)
+        print(f'found words: {found_words}')
         for found_word in found_words:
 
             if found_word in word_set:
