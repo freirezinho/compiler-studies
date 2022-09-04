@@ -17,7 +17,7 @@ lettersRegExp = re.compile('[a-zA-Z]')
 digitsRegExp = re.compile('\d')
 whitespaceRegExp = re.compile('\s')
 specialCharsRegExp = re.compile('[^a-zA-Z\s\d]')
-file_path = './Saulo Santos Freire - ex03.c'
+file_path = './ex03.c'
 letters = []
 letters_count = 0
 digits = []
@@ -39,7 +39,6 @@ with open(file_path) as file:
         letters_count += len(found_letters)
         whitespaces_count += len(found_whitespaces)
         special_chars_count += len(found_specialchars)
-    # print(lines)
     count_dict = {}
     count_dict[letters_count] = 'letras'
     count_dict[digits_count] = 'dígitos'

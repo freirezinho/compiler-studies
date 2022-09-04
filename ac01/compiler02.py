@@ -10,7 +10,7 @@ Escreva um programa em Python com as seguintes funcionalidades:
 solicitadas (ex03.out)
 • Abaixo está a tabela com as palavras reservadas da linguagem C.
 """
-file_path = './Saulo Santos Freire - ex03.c'
+file_path = './ex03.c'
 
 reserved_words = ['auto', 'break', 'case', 'char',
                   'const', 'continue', 'default', 'do',
@@ -33,7 +33,7 @@ print(word_set)
 new_lines = []
 
 og_file = open(file_path, 'r')
-new_file = open("new.c", 'w')
+new_file = open("ex03.out", 'w')
 lines = og_file.readlines()
 for line in lines:
     # print(line)
